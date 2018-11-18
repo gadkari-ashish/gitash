@@ -1,0 +1,14 @@
+---
+- name: playbook starts here 
+  hosts: "gitslave"
+
+  tasks:
+    - name: Package installation
+      yum: name=httpd state=present
+
+    - name: Amaneding webserver configuration file
+      copy: dest=/var/www/html/index.html content="This is my git managed server file - Ashish Gadkari"
+
+    - name: Starting webserver services
+      service: name=httpd state=started
+...
